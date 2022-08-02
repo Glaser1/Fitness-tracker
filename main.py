@@ -9,7 +9,9 @@ class InfoMessage:
         self.calories = calories
 
     def get_info(self):
-        return f'Тип тренировки: {self.training_type}; Длительность: {self.duration:0.3f} ч.; Дистанция: {self.distance:0.3f} км; Ср. скорость: {self.speed:0.3f} км/ч; Потрачено ккал: {self.calories:0.3f}.'
+        return (f'Тип тренировки: {self.training_type}; Длительность: {self.duration:0.3f} ч.; '
+                f'Дистанция: {self.distance:0.3f} км; Ср. скорость: {self.speed:0.3f} км/ч; '
+                f'Потрачено ккал: {self.calories:0.3f}.')
 
 
 class Training:
@@ -73,7 +75,8 @@ class SportsWalking(Training):
 
     def get_spent_calories(self) -> float:
         mean_speed = self.get_mean_speed()
-        return ((self.coeff_calorie_1 * self.weight + (mean_speed ** 2 // self.height)) * self.coeff_calorie_2 * self.weight) * self.duration
+        return ((self.coeff_calorie_1 * self.weight + (mean_speed ** 2 // self.height)
+                 ) * self.coeff_calorie_2 * self.weight) * self.duration
 
 
 class Swimming(Training):
